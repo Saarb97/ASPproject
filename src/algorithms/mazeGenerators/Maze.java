@@ -1,5 +1,9 @@
 package algorithms.mazeGenerators;
 
+import javafx.geometry.Pos;
+import java.util.concurrent.ThreadLocalRandom;
+
+
 public class Maze {
     private Position start;
     private Position end;
@@ -31,4 +35,12 @@ public class Maze {
     public Position getGoalPosition() {
         return end;
     }
+
+    public Position RandomPositionOnEdge(int rows,int columns) {
+        int row = ThreadLocalRandom.current().nextInt(0, rows+1);
+        int column = ThreadLocalRandom.current().nextInt(0, columns+1);
+
+        return null;
+    }
+
 }
