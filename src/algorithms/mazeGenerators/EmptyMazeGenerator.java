@@ -8,8 +8,7 @@ public class EmptyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int rows, int columns) {
-        int startX,startY,endX,endY;
 
-        return null;
+        return new Maze(rows,columns);
     }
 }

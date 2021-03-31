@@ -1,4 +1,5 @@
 package algorithms.mazeGenerators;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class AMazeGenerator implements IMazeGenerator {
 
