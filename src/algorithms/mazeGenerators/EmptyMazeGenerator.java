@@ -8,7 +8,7 @@ public class EmptyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int rows, int columns) {
-
+        // TODO ERROR HANDLING
         return new Maze(rows,columns);
     }
 }

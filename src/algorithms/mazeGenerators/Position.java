@@ -1,8 +1,12 @@
 package algorithms.mazeGenerators;
 
+import java.util.Objects;
+
 public class Position {
     private int rowIndex,columnIndex;
+
     public Position(int rowIndex,int columnIndex) {
+        // TODO ERROR HANDLING
         if (rowIndex >= 0)
             this.rowIndex = rowIndex;
         else
@@ -12,6 +16,11 @@ public class Position {
             this.columnIndex = columnIndex;
         else
             this.columnIndex = 0;
+    }
+
+    public Position(Position pos) {
+        this.rowIndex = pos.getRowIndex();
+        this.columnIndex = pos.getColumnIndex();
     }
 
     @Override
@@ -26,4 +35,27 @@ public class Position {
     public int getColumnIndex() {
         return columnIndex;
     }
+
+    public void setRow(int rowIndex) {
+        this.rowIndex = rowIndex;
+    }
+
+    public void setColumn(int columnIndex) {
+        this.columnIndex = columnIndex;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return rowIndex == position.rowIndex && columnIndex == position.columnIndex;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rowIndex, columnIndex);
+    }
+
+
 }

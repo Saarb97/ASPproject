@@ -1,6 +1,4 @@
-package test; /**
- * Created by Aviad on 5/10/2017.
- */
+package test;
 
 import algorithms.mazeGenerators.*;
 import algorithms.search.*;
@@ -24,6 +22,11 @@ public class Main {
         appendToResultsFile("Test finished!");
 
          */
+        EmptyMazeGenerator EMG = new EmptyMazeGenerator();
+        SimpleMazeGenerator SMG = new SimpleMazeGenerator();
+        //Maze maze = EMG.generate(50,50);
+        Maze maze = SMG.generate(50,50);
+        maze.print();
     }
     /*
     private static String getTestStatusString(boolean testPassed) {
