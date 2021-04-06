@@ -24,9 +24,14 @@ public class Main {
          */
         EmptyMazeGenerator EMG = new EmptyMazeGenerator();
         SimpleMazeGenerator SMG = new SimpleMazeGenerator();
+        MyMazeGenerator MMG = new MyMazeGenerator();
         //Maze maze = EMG.generate(50,50);
-        Maze maze = SMG.generate(50,50);
+        //Maze maze = SMG.generate(50,50);
+        Maze maze = MMG.generate(15,15);
         maze.print();
+        //long time =MMG.measureAlgorithmTimeMillis(1000,1000);
+        //System.out.println(time);
+
     }
     /*
     private static String getTestStatusString(boolean testPassed) {

@@ -7,6 +7,7 @@ public class SimpleMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int rows, int columns) {
         // TODO ERROR HANDLING
+        // min size 2X2
         Maze maze = new Maze(rows, columns);
         for (int i = 0; i <= rows - 1; i++) {
             for (int j = 0; j <= columns - 1; j++) {
