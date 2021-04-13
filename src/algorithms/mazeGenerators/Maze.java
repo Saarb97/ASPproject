@@ -1,6 +1,5 @@
 package algorithms.mazeGenerators;
 
-import javafx.geometry.Pos;
 import java.util.concurrent.ThreadLocalRandom;
 
 

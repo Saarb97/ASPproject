@@ -33,7 +33,6 @@ public class MyMazeGenerator extends AMazeGenerator{
         AddNeighbouringWallsToArray(Walls,startPos,maze);
         while(!Walls.isEmpty()) {
             int randomWallIndex = ThreadLocalRandom.current().nextInt(0, Walls.size());
-            System.out.println("Random Wall chosen: "+randomWallIndex);
             if (CheckWallAndNeighbours(Walls.get(randomWallIndex),maze)) {
                 maze[Walls.get(randomWallIndex).getRowIndex()][Walls.get(randomWallIndex).getColumnIndex()] = 0;
                 AddNeighbouringWallsToArray(Walls,Walls.get(randomWallIndex),maze);
