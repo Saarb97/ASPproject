@@ -1,6 +1,6 @@
 package algorithms.search;
 
-import algorithms.mazeGenerators.Maze;
+import algorithms.mazeGenerators.*;
 
 import java.util.ArrayList;
 
@@ -22,8 +22,37 @@ public class SearchableMaze implements ISearchable {
         return new MazeState(null, maze.getGoalPosition());
     }
 
-    @Override
-    public ArrayList<AState> getAllPossibleStates(AState state) {
-        return null;
+    public ArrayList<AState> getAllPossibleStates(AState aState) {
+
+        MazeState state = (MazeState) aState;
+        int row = state.getCurrentPos().getRowIndex();
+        int col = state.getCurrentPos().getColumnIndex();
+
+        ArrayList<AState> possibleStates = new ArrayList<>();
+        if(maze.getValueAtPos(row-1,col) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row-1, col)));
+
+        if(maze.getValueAtPos(row+1, col) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row+1, col)));
+
+        if(maze.getValueAtPos(row, col-1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row, col-1)));
+
+        if(maze.getValueAtPos(row, col+1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row, col+1)));
+
+        if(maze.getValueAtPos(row+1, col+1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row+1, col+1)));
+
+        if(maze.getValueAtPos(row+1, col-1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row+1, col-1)));
+
+        if(maze.getValueAtPos(row-1, col+1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row-1, col+1)));
+
+        if(maze.getValueAtPos(row-1, col-1) == 0)
+            possibleStates.add(new MazeState(state.getCost()+10,state,new Position(row-1, col-1)));
+
+        return possibleStates;
     }
 }

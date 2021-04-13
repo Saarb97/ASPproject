@@ -59,6 +59,10 @@ public class Maze {
         // TODO ERROR HANDLING
         maze[pos.getRowIndex()][pos.getColumnIndex()] = value;
     }
+    public int getValueAtPos(int row,int col) {
+        return maze[row][col];
+    }
+
 
     public void setRandomStartAndEndPos () {
         int rows =maze.length;
