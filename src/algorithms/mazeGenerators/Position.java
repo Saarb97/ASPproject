@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Position {
     private int rowIndex,columnIndex;
     public Position(int rowIndex,int columnIndex) {
-        // TODO ERROR HANDLING
         if (rowIndex >= 0)
             this.rowIndex = rowIndex;
         else
@@ -18,8 +17,10 @@ public class Position {
     }
 
     public Position(Position pos) {
-        this.rowIndex = pos.getRowIndex();
-        this.columnIndex = pos.getColumnIndex();
+        if (pos != null) {
+            this.rowIndex = pos.getRowIndex();
+            this.columnIndex = pos.getColumnIndex();
+        }
     }
 
     @Override

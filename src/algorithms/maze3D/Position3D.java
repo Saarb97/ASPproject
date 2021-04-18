@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Position3D {
     private int depthIndex,rowIndex,columnIndex;
     public Position3D(int depthIndex,int rowIndex, int columnIndex) {
-        // TODO ERROR HANDLING
+
         if (rowIndex >= 0)
             this.rowIndex = rowIndex;
         else
@@ -47,7 +47,7 @@ public class Position3D {
 
     public void setColumn(int columnIndex) {
         if (columnIndex >= 0)
-        this.columnIndex = columnIndex;
+            this.columnIndex = columnIndex;
     }
 
     public int getDepthIndex() {
@@ -56,7 +56,7 @@ public class Position3D {
 
     public void setDepthIndex(int depthIndex) {
         if (depthIndex >= 0)
-        this.depthIndex = depthIndex;
+            this.depthIndex = depthIndex;
     }
 
     @Override

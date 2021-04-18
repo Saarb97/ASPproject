@@ -8,15 +8,16 @@ public class Maze3D {
     private Position3D end;
     private int[][][] maze;
     public Maze3D(Position3D start, Position3D end, int[][][] maze) {
-        // TODO ERROR HANDLING
-        this.start = start;
-        this.end = end;
-        this.maze = maze;
+        if(start != null && end != null && maze != null) {
+            this.start = start;
+            this.end = end;
+            this.maze = maze;
+        }
     }
 
     public Maze3D(int depth, int rows, int columns) {
-        // TODO ERROR HANDLING
-        this.maze = new int[depth][rows][columns];
+        if(depth >= 1 && rows >= 2 && columns >= 2)
+            this.maze = new int[depth][rows][columns];
     }
 
 
@@ -64,12 +65,12 @@ public class Maze3D {
     }
 
     public void SetPos (int k, int i, int j,int value)  {
-        // TODO ERROR HANDLING
-        maze[k][i][j] = value;
+        if(k >= 0 && k <= maze.length-1 && i >= 0 && i <= maze[0].length-1 && j >= 0 && j <= maze[0][0].length-1 && ((value == 0) || (value == 1)))
+            maze[k][i][j] = value;
     }
     public void SetPos (Position3D pos,int value)  {
-        // TODO ERROR HANDLING
-        maze[pos.getDepthIndex()][pos.getRowIndex()][pos.getColumnIndex()] = value;
+        if(pos != null && ((value == 1) || (value == 0)))
+            maze[pos.getDepthIndex()][pos.getRowIndex()][pos.getColumnIndex()] = value;
     }
     public int getValueAtPos(int depth, int row,int col) {
         if (depth >= maze.length || row >= maze[0].length || col >= maze[0][0].length || row < 0 || col < 0 || depth <0)

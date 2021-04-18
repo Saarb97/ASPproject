@@ -29,6 +29,8 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     }
 
     private AState BFS(ISearchable searchable){
+        if (searchable == null)
+            return null;
         visited.add(searchable.getStartState());
         states.put(searchable.getStartState().toString(),searchable.getStartState());
 
@@ -45,7 +47,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
                     states.put(state.toString(),state);
                     visited.add(state);
                 }
-                else if (currentState.getPrev() != state){ //TODO RESEARCH
+                else if (currentState.getPrev() != state){
                     state.setPrev(currentState);
                 }
                 i++;

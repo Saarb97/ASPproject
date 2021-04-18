@@ -8,20 +8,19 @@ public class Maze {
     private Position end;
     private int[][] maze;
     public Maze(Position start,Position end,int[][] maze) {
-        // TODO ERROR HANDLING
-        this.start = start;
-        this.end = end;
-        this.maze = maze;
+        if(start != null && end != null && maze != null)
+        {
+            this.start = start;
+            this.end = end;
+            this.maze = maze;
+        }
     }
 
     public Maze(int rows, int columns) {
-        // TODO ERROR HANDLING
-        this.maze = new int[rows][columns];
-        setRandomStartAndEndPos();
-    }
-
-    public Maze() {
-
+        if (rows >= 2 && columns >= 2) {
+            this.maze = new int[rows][columns];
+            setRandomStartAndEndPos();
+        }
     }
 
     public void print() {
@@ -56,12 +55,14 @@ public class Maze {
     }
 
     public void SetPos (int i, int j,int value)  {
-        // TODO ERROR HANDLING
-        maze[i][j] = value;
+        if((value == 0 || value == 1) && (0 <= i && i <= maze.length - 1) && ((0 <= j && j <= maze[0].length - 1))){
+            maze[i][j] = value;
+        }
     }
-    public void SetPos (Position pos,int value)  {
-        // TODO ERROR HANDLING
-        maze[pos.getRowIndex()][pos.getColumnIndex()] = value;
+    public void SetPos (Position pos,int value) {
+        if ((pos != null) && (value == 0 || value == 1)) {
+            maze[pos.getRowIndex()][pos.getColumnIndex()] = value;
+        }
     }
     public int getValueAtPos(int row,int col) {
         if (row >= maze.length || col >= maze[0].length || row < 0 || col < 0)
