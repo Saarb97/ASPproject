@@ -7,16 +7,15 @@ public class MyMazeGenerator extends AMazeGenerator{
 
     @Override
     public Maze generate(int rows, int columns) {
-        // TODO ERROR HANDLING
-        // min size 2X2
-        int[][] maze = new int[rows][columns];
-        FillMazeWithWalls(maze);
-
-        return CreateMazeWithPrim(maze);
+        if (rows >= 2 && columns >= 2) {
+            int[][] maze = new int[rows][columns];
+            FillMazeWithWalls(maze);
+            return CreateMazeWithPrim(maze);
+        }
+        return null;
     }
 
     private void FillMazeWithWalls(int[][] maze) {
-        //TODO ERROR HANDLING
         if (maze != null) {
             for (int i = 0; i <= maze.length - 1; i++) {
                 for (int j = 0; j <= maze[0].length - 1; j++) {
@@ -28,6 +27,8 @@ public class MyMazeGenerator extends AMazeGenerator{
 
     private Maze CreateMazeWithPrim(int[][] maze) {
         //setting random start point
+        if (maze == null)
+            return null;
         Position startPos = CalcRandomStartPoint(maze);
         ArrayList<Position>Walls = new ArrayList();
         maze[startPos.getRowIndex()][startPos.getColumnIndex()] = 0;
@@ -44,6 +45,8 @@ public class MyMazeGenerator extends AMazeGenerator{
         return new Maze(startPos,endPos,maze);
     }
     private Position CalcRandomStartPoint(int[][] maze) {
+        if (maze == null)
+            return null;
         int rows =maze.length;
         int columns = maze[0].length;
         int startRow,startCol;
@@ -59,32 +62,34 @@ public class MyMazeGenerator extends AMazeGenerator{
         return new Position(startRow,startCol);
     }
     private void AddNeighbouringWallsToArray(ArrayList array,Position pos,int[][] maze) {
-        //TODO ERROR HANDLING
-        if (pos.getRowIndex()-1 >= 0 && maze[pos.getRowIndex()-1][pos.getColumnIndex()] == 1)
-            array.add(new Position(pos.getRowIndex()-1,pos.getColumnIndex()));
-        if (pos.getRowIndex()+1 <= maze.length-1 && maze[pos.getRowIndex()+1][pos.getColumnIndex()] == 1)
-            array.add(new Position(pos.getRowIndex()+1,pos.getColumnIndex()));
-        if (pos.getColumnIndex()-1 >= 0 && maze[pos.getRowIndex()][pos.getColumnIndex()-1] == 1)
-            array.add(new Position(pos.getRowIndex(),pos.getColumnIndex()-1));
-        if (pos.getColumnIndex()+1 <= maze[0].length-1 && maze[pos.getRowIndex()][pos.getColumnIndex()+1] == 1)
-            array.add(new Position(pos.getRowIndex(),pos.getColumnIndex()+1));
+        if ((maze != null) && (pos != null) && (array != null)) {
+            if (pos.getRowIndex() - 1 >= 0 && maze[pos.getRowIndex() - 1][pos.getColumnIndex()] == 1)
+                array.add(new Position(pos.getRowIndex() - 1, pos.getColumnIndex()));
+            if (pos.getRowIndex() + 1 <= maze.length - 1 && maze[pos.getRowIndex() + 1][pos.getColumnIndex()] == 1)
+                array.add(new Position(pos.getRowIndex() + 1, pos.getColumnIndex()));
+            if (pos.getColumnIndex() - 1 >= 0 && maze[pos.getRowIndex()][pos.getColumnIndex() - 1] == 1)
+                array.add(new Position(pos.getRowIndex(), pos.getColumnIndex() - 1));
+            if (pos.getColumnIndex() + 1 <= maze[0].length - 1 && maze[pos.getRowIndex()][pos.getColumnIndex() + 1] == 1)
+                array.add(new Position(pos.getRowIndex(), pos.getColumnIndex() + 1));
+        }
     }
     private boolean CheckWallAndNeighbours(Position pos,int[][] maze) {
-        //TODO ERROR HANDLING
 
-        // checking how many squares around the potential path are themselves squares.
-        // if more than one square is a maze path already, the position is disqualified and function returns false
-        int counter = 0;
-        if (pos.getRowIndex()-1 >= 0 && maze[pos.getRowIndex()-1][pos.getColumnIndex()] == 0)
-            counter++;
-        if (pos.getRowIndex()+1 <= maze.length-1 && maze[pos.getRowIndex()+1][pos.getColumnIndex()] == 0)
-            counter++;
-        if (pos.getColumnIndex()-1 >= 0 && maze[pos.getRowIndex()][pos.getColumnIndex()-1] == 0)
-            counter++;
-        if (pos.getColumnIndex()+1 <= maze[0].length-1 && maze[pos.getRowIndex()][pos.getColumnIndex()+1] == 0)
-            counter++;
-        if (counter == 1) //only one Neighbour of the wall is a path
-            return true;
+        if ((maze != null) && (pos != null)) {
+            // checking how many squares around the potential path are themselves squares.
+            // if more than one square is a maze path already, the position is disqualified and function returns false
+            int counter = 0;
+            if (pos.getRowIndex() - 1 >= 0 && maze[pos.getRowIndex() - 1][pos.getColumnIndex()] == 0)
+                counter++;
+            if (pos.getRowIndex() + 1 <= maze.length - 1 && maze[pos.getRowIndex() + 1][pos.getColumnIndex()] == 0)
+                counter++;
+            if (pos.getColumnIndex() - 1 >= 0 && maze[pos.getRowIndex()][pos.getColumnIndex() - 1] == 0)
+                counter++;
+            if (pos.getColumnIndex() + 1 <= maze[0].length - 1 && maze[pos.getRowIndex()][pos.getColumnIndex() + 1] == 0)
+                counter++;
+            if (counter == 1) //only one Neighbour of the wall is a path
+                return true;
+        }
         return false;
     }
     /*

@@ -32,6 +32,8 @@ public class DepthFirstSearch extends ASearchingAlgorithm {
     }
 
     private AState DFS(ISearchable searchable){
+        if (searchable == null) return null;
+
         stack.push(searchable.getStartState());
         states.put(searchable.getStartState().toString(), searchable.getStartState());
 

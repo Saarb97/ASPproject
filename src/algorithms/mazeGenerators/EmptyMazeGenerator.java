@@ -8,8 +8,8 @@ public class EmptyMazeGenerator extends AMazeGenerator {
 
     @Override
     public Maze generate(int rows, int columns) {
-        // TODO ERROR HANDLING
-        // min size 2X2
-        return new Maze(rows,columns);
+        if (rows >= 2 && columns >= 2)
+            return new Maze(rows,columns);
+        return null;
     }
 }

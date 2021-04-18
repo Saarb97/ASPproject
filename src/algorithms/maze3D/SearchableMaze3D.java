@@ -28,7 +28,7 @@ public class SearchableMaze3D implements ISearchable {
     public Maze3D getMaze() {return maze;}
 
     public ArrayList<AState> getAllSuccessors(AState aState) {
-
+        if(aState == null){return null;}
         Maze3DState state = (Maze3DState) aState;
         int depth = state.getCurrentPos().getDepthIndex();
         int row = state.getCurrentPos().getRowIndex();
