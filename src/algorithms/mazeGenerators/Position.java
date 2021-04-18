@@ -4,7 +4,6 @@ import java.util.Objects;
 
 public class Position {
     private int rowIndex,columnIndex;
-    public boolean isVisited; // might not need
     public Position(int rowIndex,int columnIndex) {
         // TODO ERROR HANDLING
         if (rowIndex >= 0)
@@ -16,13 +15,11 @@ public class Position {
             this.columnIndex = columnIndex;
         else
             this.columnIndex = 0;
-        isVisited = false;
     }
 
     public Position(Position pos) {
         this.rowIndex = pos.getRowIndex();
         this.columnIndex = pos.getColumnIndex();
-        this.isVisited = pos.isVisited;
     }
 
     @Override

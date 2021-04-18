@@ -7,6 +7,7 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
     protected Queue<AState> visited;
     protected HashMap<String, AState> states;
     public BreadthFirstSearch() {
+        nodesEvaluated = 0;
         Queue<AState> q = new LinkedList<>();
         this.visited = q;
         HashMap<String, AState> hashmap = new HashMap<String, AState>();
@@ -17,13 +18,11 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         if (searchable == null)
             return null;
         AState goalState = BFS(searchable);
-//        if(goalState != null)
-//            return backSolPath(goalState);
+
         if(goalState != null)
         {
-            Solution s = backSolPath(goalState);
-            this.sol = s;
-            return s;
+            this.sol = backSolPath(goalState);
+            return sol;
         }
         else
             return null;
@@ -34,18 +33,20 @@ public class BreadthFirstSearch extends ASearchingAlgorithm{
         states.put(searchable.getStartState().toString(),searchable.getStartState());
 
         while (!visited.isEmpty()) {
-
+            nodesEvaluated++;
             AState currentState = visited.poll();
-
             if (currentState.equals(searchable.getGoalState()))
                 return currentState;
-            ArrayList<AState> possibleStates = searchable.getAllPossibleStates(currentState);
+            ArrayList<AState> possibleStates = searchable.getAllSuccessors(currentState);
             int i = 0;
             while (i < possibleStates.size()) {
                 AState state = possibleStates.get(i);
                 if (!states.containsKey(state.toString())){
                     states.put(state.toString(),state);
                     visited.add(state);
+                }
+                else if (currentState.getPrev() != state){ //TODO RESEARCH
+                    state.setPrev(currentState);
                 }
                 i++;
             }

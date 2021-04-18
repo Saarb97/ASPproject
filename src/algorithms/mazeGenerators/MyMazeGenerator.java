@@ -16,6 +16,7 @@ public class MyMazeGenerator extends AMazeGenerator{
     }
 
     private void FillMazeWithWalls(int[][] maze) {
+        //TODO ERROR HANDLING
         if (maze != null) {
             for (int i = 0; i <= maze.length - 1; i++) {
                 for (int j = 0; j <= maze[0].length - 1; j++) {
@@ -69,6 +70,10 @@ public class MyMazeGenerator extends AMazeGenerator{
             array.add(new Position(pos.getRowIndex(),pos.getColumnIndex()+1));
     }
     private boolean CheckWallAndNeighbours(Position pos,int[][] maze) {
+        //TODO ERROR HANDLING
+
+        // checking how many squares around the potential path are themselves squares.
+        // if more than one square is a maze path already, the position is disqualified and function returns false
         int counter = 0;
         if (pos.getRowIndex()-1 >= 0 && maze[pos.getRowIndex()-1][pos.getColumnIndex()] == 0)
             counter++;
@@ -102,7 +107,7 @@ public class MyMazeGenerator extends AMazeGenerator{
                 endPosCandidates.add(new Position(i, 0));
         }
         for(int i = 0;i <= maze.length-1;i++) {
-            if (maze[maze[0].length-1][0] == 0)
+            if (maze[i][maze[0].length-1] == 0)
                 endPosCandidates.add(new Position(i, maze[0].length-1));
         }
 

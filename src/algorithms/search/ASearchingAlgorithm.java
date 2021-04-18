@@ -7,11 +7,12 @@ import java.util.Collections;
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
 
     protected Solution sol;
+    protected int nodesEvaluated;
 
     public String getName() { return getClass().getName(); }
 
     @Override
-    public int getNumberOfNodesEvaluated() { return sol.getSolutionPath().size(); }
+    public int getNumberOfNodesEvaluated() { return this.nodesEvaluated; }
 
     public Solution backSolPath(AState goalState){
 
