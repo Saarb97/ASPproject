@@ -20,6 +20,10 @@ public class Maze {
         setRandomStartAndEndPos();
     }
 
+    public Maze() {
+
+    }
+
     public void print() {
         for (int i = 0; i <= maze.length - 1; i++) {
             System.out.print("{ ");
@@ -60,6 +64,8 @@ public class Maze {
         maze[pos.getRowIndex()][pos.getColumnIndex()] = value;
     }
     public int getValueAtPos(int row,int col) {
+        if (row >= maze.length || col >= maze[0].length || row < 0 || col < 0)
+            return 1;
         return maze[row][col];
     }
 

@@ -10,7 +10,8 @@ public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
 
     public String getName() { return getClass().getName(); }
 
-    public int getNumberOfNodesEvaluated() { return sol.getPath().size(); }
+    @Override
+    public int getNumberOfNodesEvaluated() { return sol.getSolutionPath().size(); }
 
     public Solution backSolPath(AState goalState){
 

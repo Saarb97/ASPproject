@@ -9,7 +9,7 @@ public class Solution {
         this.path = path;
     }
 
-    public ArrayList<AState> getPath() {
+    public ArrayList<AState> getSolutionPath() {
         return path;
     }
 }
