@@ -86,7 +86,7 @@ public class Maze {
         }
         while (true) {
             endRow = ThreadLocalRandom.current().nextInt(0, rows);
-            if (Math.abs(endRow-startRow) > (columns/10)*5)  //searching for a end point which is at least
+            if (Math.abs(endRow-startRow) >= (rows/10)*5)  //searching for a end point which is at least
                 break;                                       // 50% up\down the Maze from the start point (relative to maze size)
         }
         if (endRow == 0 || endRow == rows-1) // same as starting row and starting column positioning
