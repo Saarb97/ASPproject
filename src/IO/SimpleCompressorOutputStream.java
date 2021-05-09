@@ -48,6 +48,7 @@ public class SimpleCompressorOutputStream extends OutputStream {
                 finalArray[i] = array.get(i);
 
             out.write(finalArray);
+
         }
         catch (Exception e){
             e.printStackTrace();

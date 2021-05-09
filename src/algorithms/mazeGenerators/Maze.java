@@ -137,7 +137,6 @@ public class Maze {
         addIntToByteArray(start.getColumnIndex(), array);
         addIntToByteArray(end.getRowIndex(), array);
         addIntToByteArray(end.getColumnIndex(), array);
-
         //adding maze to byte array
         for (int i = 0; i <= maze.length - 1; i++) {
             for (int j = 0; j <= maze[0].length - 1; j++) {
