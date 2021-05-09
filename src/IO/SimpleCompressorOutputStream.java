@@ -41,6 +41,7 @@ public class SimpleCompressorOutputStream extends OutputStream {
                     currentCount = 1;
                 }
             }
+            array.add(currentCount);
             //converting arrayList to normal array for return
             byte[] finalArray = new byte[array.size()];
             for(int i=0;i<array.size();i++)
