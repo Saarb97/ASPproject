@@ -1,11 +1,12 @@
 package algorithms.mazeGenerators;
 
+import java.io.Serializable;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-public class Maze {
+public class Maze implements Serializable{
     private Position start;
     private Position end;
     private int[][] maze;

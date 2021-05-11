@@ -10,10 +10,9 @@ public class ServerStrategyGenerateMaze implements IServerStrategy {
      * Get the maze Parameters and return a compress maze to client.
      * @param fromClient
      * @param toClient
-     * @throws IOException
      */
     @Override
-    public void serverStrategy(InputStream fromClient, OutputStream toClient) throws IOException {
+    public void serverStrategy(InputStream fromClient, OutputStream toClient) {
         try{
             ObjectInputStream inClient = new ObjectInputStream(fromClient);
             ObjectOutputStream outClient = new ObjectOutputStream(toClient);

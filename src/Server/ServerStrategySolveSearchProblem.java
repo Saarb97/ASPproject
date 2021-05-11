@@ -10,17 +10,17 @@ import java.io.*;
 
 public class ServerStrategySolveSearchProblem implements IServerStrategy {
 
-    private String tempPath = System.getProperty("/tmp"); //java.io.tmpdir
+    private String tempPath = System.getProperty("java.io.tmpdir");
+    //private String tempPath = System.getProperty("/tmp"); //java.io.tmpdir
     private Lock lock = new ReentrantLock(true);
 
     /**
      * Write the solution into a file(outstream) and Reading from a file.
      * @param FromClient
      * @param ToClient
-     * @throws IOException
      */
     @Override
-    public void serverStrategy(InputStream FromClient, OutputStream ToClient) throws IOException {
+    public void serverStrategy(InputStream FromClient, OutputStream ToClient)  {
         try {
             // Setting and initial variables.
             Solution sol;
