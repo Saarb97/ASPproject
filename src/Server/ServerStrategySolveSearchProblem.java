@@ -32,7 +32,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
             lock.lock();
             File file = new File(path);
 
-            // Generate maze and solve him.
+            // if solution does not exists already in the folder, solve the maze and send to the client
             if (!file.exists())
             {
                 lock.unlock();
@@ -47,7 +47,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
                 objectOut.flush();
 
             }
-            // Write the solution into a file(outstream) and Reading from a file.
+            // if the maze was already solved, send the solution to the client
             else {
                 FileInputStream fileIn = new FileInputStream(path);
                 ObjectInputStream objectIn = new ObjectInputStream(fileIn);

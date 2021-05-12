@@ -157,9 +157,24 @@ public class PartB_Main {
         solveSearchProblemServer.start();
         mazeGeneratingServer.start();
 
-        CommunicateWithServer_MazeGenerating(counter);
+        Thread[] threads = new Thread[6];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(() -> {
+                CommunicateWithServer_MazeGenerating(counter);
 
-        CommunicateWithServer_SolveSearchProblem(counter);
+                CommunicateWithServer_SolveSearchProblem(counter);
+            });
+            threads[i].start();
+        }
+        for (int i = 0; i < threads.length; i++) {
+            try{
+                threads[i].join();
+            }catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+
 
         //Stopping all servers
         mazeGeneratingServer.stop();
